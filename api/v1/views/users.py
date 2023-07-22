@@ -7,6 +7,7 @@ from api.v1.views import app_views
 from models import storage
 from models.user import User
 
+
 # GET /api/v1/users
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def get_users():
@@ -49,7 +50,8 @@ def post_user():
     Creates a User object based on the JSON body request.
     if the JSON body request is not valid, raise a 400 error.
     if the JSON body request does not contain the key email, raise a 400 error.
-    if the JSON body request does not contain the key password, raise a 400 error.
+    if the JSON body request does not contain the key password,
+    raise a 400 error.
     return a dictionary representation of the new
     User object with a status code 201
     """
@@ -57,11 +59,13 @@ def post_user():
     if not request.get_json():
         # abort() will raise an exception that returns a response
         abort(400, description="Not a JSON")
-    # If the JSON body request does not contain the key email, raise a 400 error
+    # If the JSON body request does not contain the key email,
+    # raise a 400 error
     if 'email' not in request.get_json():
         # abort() will raise an exception that returns a response
         abort(400, description="Missing email")
-    # If the JSON body request does not contain the key password, raise a 400 error
+    # If the JSON body request does not contain the key password,
+    # raise a 400 error
     if 'password' not in request.get_json():
         # abort() will raise an exception that returns a response
         abort(400, description="Missing password")
