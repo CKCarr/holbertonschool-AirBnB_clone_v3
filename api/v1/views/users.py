@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Create a new view for User objects that handles all default RestFul API """
+
 from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
