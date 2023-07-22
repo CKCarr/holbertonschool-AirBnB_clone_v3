@@ -13,7 +13,7 @@ from models.amenity import Amenity
 def get_amenity():
     """ Retrieves the list of all Amenity objects """
     amenities = storage.all(Amenity).values()
-    amenity_list = [amenity.to_dict() for amenity in amenity]
+    amenity_list = [amenity.to_dict() for amenity in amenities]
     return jsonify(amenity_list)
 
 # GET /api/v1/amenities/<amenity_id>
