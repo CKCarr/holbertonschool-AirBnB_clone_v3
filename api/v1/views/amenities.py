@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Create a new view for Amenity objects that handles all default RestFul API """
+""" Create a new view for Amenity objects
+that handles all default RestFul API """
 
 from flask import jsonify, request, abort
 from api.v1.views import app_views
@@ -16,6 +17,7 @@ def get_amenity():
     amenity_list = [amenity.to_dict() for amenity in amenities]
     return jsonify(amenity_list)
 
+
 # GET /api/v1/amenities/<amenity_id>
 @app_views.route('/amenities/<amenity_id>', methods=['GET'],
                  strict_slashes=False)
@@ -30,6 +32,7 @@ def get_amenities(amenity_id):
     # and return it as JSON response
     return jsonify(amenity.to_dict())
 
+
 # DELETE api/v1/amenities/<amenity_id>
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'],
                  strict_slashes=False)
@@ -43,6 +46,7 @@ def delete_amenity(amenity_id):
     amenity.delete()
     storage.save()
     return jsonify({}), 200
+
 
 # POST api/v1/amenities
 @app_views.route('/amenities', methods=['POST'],
@@ -68,6 +72,7 @@ def post_amenity():
     # Convert the Amenity object to a dictionary
     # and return it as JSON response with status code 201
     return jsonify(amenity.to_dict()), 201
+
 
 # PUT api/v1/amenities/<amenity_id>
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'],
